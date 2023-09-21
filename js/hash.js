@@ -4,6 +4,16 @@ function zen2han(str) {
     });
 }
 
+function correct_empty_string(str) {
+    if (str == null ||
+        str == undefined ||
+        str.length == 0) {
+        return "";
+    } else {
+        return str.trim();
+    }
+}
+
 function hashCode(str) {
     var hash = 0,
         i, chr;
@@ -31,9 +41,11 @@ function calc_group(s) {
 }
 
 function show() {
-    const course = document.getElementById("course").innerText.trim();
+    const course = document.getElementById("course");
+    const course_code = course.dataset.course_code;
+    const adjustment = correct_empty_string(course.dataset.course_adjustment);
     const gakuseki = document.getElementById("gakuseki").value.trim();
-    const str = course + gakuseki;
+    const str = course_code + adjustment + gakuseki;
     const grps = ["A", "B", "C"];
     
     group = calc_group(str);
@@ -51,12 +63,13 @@ function show() {
 
 function balancecheck() {
     const course = document.getElementById("course").value.trim();
+    const adjustment = correct_empty_string(document.getElementById("adjustment").value);
     const gakuseki_all = document.getElementById("gakuseki").value;
     const gakuseki_arr = gakuseki_all.split("\n");
     var result = [];
     var table = {"A": 0, "B": 0, "C": 0};
     for (i = 0; i < gakuseki_arr.length; i++) {
-        var g = calc_group(course + gakuseki_arr[i].trim());
+        var g = calc_group(course + adjustment + gakuseki_arr[i].trim());
         ++table[g];
         result.push(g);
     }

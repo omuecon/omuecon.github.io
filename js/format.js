@@ -1,7 +1,11 @@
 function displayCourse(json) {
     document.title = json.course_title;
-    document.getElementById("title").innerText = json.course_title;
-    document.getElementById("course").innerText = json.course_code;
+    let course_title = document.getElementById("course");
+    course_title.innerText = json.course_title;
+    course_title.dataset.course_code = json.course_code;
+    course_title.dataset.course_adjustment = json.adjustment;
+
+    document.getElementById("code").innerText = json.course_code;
     document.getElementById("room_remote").innerText = json.remote;
     document.getElementById("room_inperson").innerText = json.inperson;
     room_remote
