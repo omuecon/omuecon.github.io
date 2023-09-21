@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        #inputform {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #group {
+            font-size: 300%;
+            padding-left: 0.6rem;
+            padding-right: 0.6rem;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1 id="course">2023年度 ミクロ経済学1</h1>
+        <p id="frontmatter">
+            この授業科目は、対面教室10回 + 中継教室5回のハイフレックス授業として実施します。
+            自分のグループを確認して、適切な教室で受講してください。
+        </p>
+        <form id="inputform">
+            <label for="gakuseki">学籍番号</label>
+            <input type="text" name="gakuseki" id="gakuseki">
+            <input type="button" value="チェック" onclick="show()">
+            <innput></innput>
+        </form>
+        <p>あなたはグループ<span id="group">???</span>です。</p>
+        <script>
+            const course = document.getElementById("group").innerText;
+
+            function zen2han(str) {
+                return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+                    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                });
+            }
+            hashCode = function (str) {
+                var hash = 0,
+                    i, chr;
+                str = zen2han(str)
+                var str_lower = str.toLowerCase();
+                if (str_lower.length === 0) return -1;
+                for (i = 0; i < str_lower.length; i++) {
+                    chr = str_lower.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + chr;
+                    hash |= 0; // Convert to 32bit integer
+                }
+                if (hash < 0) {
+                    hash = -hash;
+                }
+                return hash;
+            }
+
+            function mod3(n) {
+                var group;
+                switch (n % 3) {
+                    case 0:
+                        group = "A";
+                        break;
+                    case 1:
+                        group = "B";
+                        break;
+                    case 2:
+                        group = "C";
+                        break;
+                    default: 
+                        group = "???";
+                }
+                return group
+            }
+
+            function show() {
+                var str = course + document.getElementById("gakuseki").value;
+                document.getElementById("group").innerHTML = mod3(hashCode(str));
+            }
+        </script>
+    </center>
+</body>
+
+</html>
