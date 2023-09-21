@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Balance Check</title>
+    <style>
+
+        /* Clear floats after the columns */
+
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        .left,
+        .right {
+            width: 180px;
+        }
+
+        .middle {
+            width: 50px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>バランスチェック</h1>
+    <form id="inputform">
+        <div>
+            <label for="code">科目コード</label>
+            <input type="text" id="course" value="">
+        </div>
+        <div class="row">
+            <div class="column left">
+                <label for="gakuseki">学籍番号（改行区切り）</label><br>
+                <textarea cols="15" rows="15" name="gakuseki" id="gakuseki"></textarea><br>
+                <input type="button" value="チェック" onclick="balancecheck()">
+            </div>
+            <div class="column middle"></div>
+            <div class="column right">
+                <label for="kekka">グループ</label><br>
+                <textarea cols="15" rows="15" name="kekka" id="kekka"></textarea>
+            </div>
+        </div>
+    </form>
+    <p id="balanceresult"></p>
+    <script type="text/javascript" src="/js/hash.js"></script>
+</body>
+
+</html>
