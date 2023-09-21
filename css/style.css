@@ -1,18 +1,71 @@
-#container {
-    text-align: center;
-    margin: 0 auto;
+* {
+    color: rgba(23, 21, 21, 0.909);
 }
 
-table {
-    margin: 10px auto;
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+#container {
+    margin: 0 auto;
+    width: 480px;
+}
+
+#container p {
+    margin: 0.5rem auto;
+}
+
+#grouping {
+    border: 1px solid slategray;
+    background-color: #eaeff5;
+    border-radius: 6px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+#group {
+    font-size: 300%;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
 }
 
 #inputform {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-#group {
-    font-size: 300%;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
+
+input[type="text"] {
+    padding: 3px 5px;
+    line-height: 18px;
+}
+
+
+
+table {
+    margin: 10px auto;
+}
+
+table {
+    width: 400px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;
+    border-bottom: solid 2px #748ca5;
+}
+
+td {
+    padding: 10px;
+    border-bottom: solid 1px #748ca5;
+}
+
+.my-group td:nth-child(1),
+.my-group td:nth-child(2) {
+    background-color: rgba(0, 191, 255, 0.287);
 }

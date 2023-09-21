@@ -10,22 +10,29 @@
     <div id="container">
         <h1 id="title"></h1>
         <h2 id="course"></h2>
-        <p id="frontmatter">
-            この授業科目は、対面教室10回 + 中継教室5回のハイフレックス授業として実施します。<br>
+        <p>
+            この授業科目は、対面教室10回 + 中継教室5回のハイフレックス授業として実施します。
+        </p>
+        <p>
             自分のグループと教室を確認してください。
         </p>
+
+        <div id="grouping">
         <form id="inputform">
             <label for="gakuseki">学籍番号</label>
             <input type="text" name="gakuseki" id="gakuseki">
             <input type="button" value="チェック" onclick="show()">
         </form>
         <p>あなたはグループ<span id="group">???</span>です。</p>
-        
-        <h2>スケジュール</h2>
+        </div>
+
+        <h3>スケジュール</h3>
         <table id="schedule">
             <thead>
                 <tr>
-                    <th>日付</th><th>遠隔グループ</th>
+                    <th>日付</th>
+                    <th>遠隔（<span id="room_remote"></span>）</th>
+                    <th>対面（<span id="room_inperson"></span>）</th>
                 </tr>
             </thead>
             <tbody></tbody>

@@ -1,5 +1,3 @@
-var group;
-
 function zen2han(str) {
     return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
         return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
@@ -24,21 +22,8 @@ function hashCode(str) {
 }
 
 function mod3(n) {
-
-    switch (n % 3) {
-        case 0:
-            g = "A";
-            break;
-        case 1:
-            g = "B";
-            break;
-        case 2:
-            g = "C";
-            break;
-        default:
-            g = "???";
-    }
-    return g;
+    let groups = ["A", "B", "C"]; 
+    return groups[n % 3];
 }
 
 function calc_group(s) {
@@ -49,8 +34,19 @@ function show() {
     const course = document.getElementById("course").innerText.trim();
     const gakuseki = document.getElementById("gakuseki").value.trim();
     const str = course + gakuseki;
+    const grps = ["A", "B", "C"];
+    
     group = calc_group(str);
     document.getElementById("group").innerHTML = group;
+
+    let trs = document.querySelectorAll("#schedule tbody tr");
+    for (let i = 0; i < trs.length; i++) {
+        if (grps[i % 3] == group) {
+            trs[i].classList.add("my-group");
+        } else {
+            trs[i].classList.remove("my-group");
+        }
+    }
 }
 
 function balancecheck() {

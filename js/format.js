@@ -2,6 +2,9 @@ function displayCourse(json) {
     document.title = json.course_title;
     document.getElementById("title").innerText = json.course_title;
     document.getElementById("course").innerText = json.course_code;
+    document.getElementById("room_remote").innerText = json.remote;
+    document.getElementById("room_inperson").innerText = json.inperson;
+    room_remote
 }
 
 function displaySchedule(json) {
@@ -19,6 +22,10 @@ function displaySchedule(json) {
         let td2 = document.createElement("td");
         td2.textContent = grps[i % 3];
         tr.appendChild(td2);
+
+        let td3 = document.createElement("td");
+        td3.textContent = grps[(i + 1) % 3] + " + " + grps[(i + 2) % 3];
+        tr.appendChild(td3);
         
         schedule.appendChild(tr);
     }
