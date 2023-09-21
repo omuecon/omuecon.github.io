@@ -10,7 +10,12 @@ h3 {
 
 #container {
     margin: 0 auto;
+    margin-bottom: 80px;
     width: 480px;
+}
+
+#course {
+    margin-bottom: 2em;
 }
 
 #container p {
@@ -19,10 +24,10 @@ h3 {
 
 #grouping {
     border: 1px solid slategray;
-    background-color: #eaeff5;
+    background-color: rgba(0, 191, 255, 0.287);
     border-radius: 6px;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
     padding-bottom: 10px;
     text-align: center;
 }
@@ -42,8 +47,6 @@ input[type="text"] {
     padding: 3px 5px;
     line-height: 18px;
 }
-
-
 
 table {
     margin: 10px auto;
@@ -68,4 +71,12 @@ td {
 .my-group td:nth-child(1),
 .my-group td:nth-child(2) {
     background-color: rgba(0, 191, 255, 0.287);
+}
+
+#final-note {
+    margin-top: 50px;
+}
+#final-note li::marker {
+    content: "💡 ";
+    font-size: 1.2em;
 }
