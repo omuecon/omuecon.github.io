@@ -102,7 +102,7 @@ function plotHist(table) {
     var data = [trace1];
 
     var layout = {
-        title: 'Balance',
+        title: 'Distribution',
         barmode: 'stack'
     };
 
