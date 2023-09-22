@@ -32,7 +32,7 @@ function hashCode(str) {
 }
 
 function mod3(n) {
-    let groups = ["A", "B", "C"]; 
+    let groups = ["A", "B", "C"];
     return groups[n % 3];
 }
 
@@ -47,7 +47,7 @@ function show() {
     const gakuseki = document.getElementById("gakuseki").value.trim();
     const str = course_code + adjustment + gakuseki;
     const grps = ["A", "B", "C"];
-    
+
     group = calc_group(str);
     document.getElementById("group").innerHTML = group;
 
@@ -67,12 +67,44 @@ function balancecheck() {
     const gakuseki_all = document.getElementById("gakuseki").value;
     const gakuseki_arr = gakuseki_all.split("\n");
     var result = [];
-    var table = {"A": 0, "B": 0, "C": 0};
+    var table = { "A": 0, "B": 0, "C": 0 };
     for (i = 0; i < gakuseki_arr.length; i++) {
         var g = calc_group(course + adjustment + gakuseki_arr[i].trim());
         ++table[g];
         result.push(g);
     }
     document.getElementById("kekka").value = result.join("\n");
-    document.getElementById("balanceresult").innerHTML = `A: ${table["A"]}<br>B: ${table["B"]}<br>C: ${table["C"]}`;
+    plotHist(table);
+}
+
+function plotHist(table) {
+    var yValue = ["C", "B", "A"];
+    var xValue = [table.C, table.B, table.A];
+
+    var trace1 = {
+        x: xValue,
+        y: yValue,
+        type: 'bar',
+        text: xValue.map(String),
+        textposition: 'auto',
+        hoverinfo: 'none',
+        orientation: 'h',
+        marker: {
+            color: 'rgb(158,202,225)',
+            opacity: 0.6,
+            line: {
+                color: 'rgb(8,48,107)',
+                width: 1.5
+            }
+        }
+    };
+
+    var data = [trace1];
+
+    var layout = {
+        title: 'Balance',
+        barmode: 'stack'
+    };
+
+    Plotly.newPlot('myDiv', data, layout);
 }
