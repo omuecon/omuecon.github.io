@@ -11,12 +11,13 @@ function displayCourse(json) {
     room_remote
 }
 
-function displaySchedule(json) {
+function displaySchedule(json, n = 15) {
     let schedule = document.querySelector("#schedule tbody");
     const grps = ["A", "B", "C"];
+    const nweeks = (json.dates.length > n) ? n : json.dates.length;
 
     /// ここを書き換えてテーブルを作る
-    for (let i = 0; i < json.dates.length; i++) {
+    for (let i = 0; i < nweeks; i++) {
         let tr = document.createElement("tr");
 
         let td1 = document.createElement("td");

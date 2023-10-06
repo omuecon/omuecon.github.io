@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1 id="course"></h1>
+        <h2 id="code"></h2>
+        <p>
+            この授業科目は、第3週目までハイフレックス授業として実施します。
+        </p>
+        <p>
+            グループと教室を確認して、指示された教室に出席してください。
+        </p>
+
+        <div id="grouping">
+        <form id="inputform">
+            <label for="gakuseki">学籍番号</label>
+            <input type="text" name="gakuseki" id="gakuseki">
+            <input type="button" value="チェック" onclick="show()">
+        </form>
+        <p>あなたはグループ<span id="group">???</span>です。</p>
+        </div>
+
+        <h3>スケジュール</h3>
+        <table id="schedule">
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>遠隔（<span id="room_remote"></span>）</th>
+                    <th>対面（<span id="room_inperson"></span>）</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="callout callout-info">
+            <h4>教室変更のご案内</h4>
+            <p>第4週目（10月17日）から、教室が変更になります。10月17日以降、グループにかかわらず<strong>基礎教育実験棟 階段教室</strong>で受講してください。</p>
+            <a href="sugimoto_map.png"><img alt="教室移動地図" src="sugimoto_map.png" width="80%" /></a>
+        </div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" src="/js/format.js"></script>
+    <script type="text/javascript" src="/js/hash.js"></script>
+    <script>
+        (async () => {
+            let course_json;
+          
+            const getData = async () => {
+              const response = await fetch("data.json");
+              const data = await response.json();
+              course_json = data;
+              return data;
+            };
+          
+            await getData();
+            
+            displayCourse(course_json);
+            displaySchedule(course_json, 3);
+          
+          })();
+    </script>
+    
+    
+</body>
+
+</html>
